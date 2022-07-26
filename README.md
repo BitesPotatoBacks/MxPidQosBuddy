@@ -1,6 +1,6 @@
 <h1 align="center" style="">MxPidCpuRange</h1>
 <p align="center">
-  A simple shell script to find the QoS and determine the range of CPU cores available to the specifed PID(s) (for Apple M-Series)
+Determine the QoS and range of available CPU cores of any specified PID(s) on your Apple M-Series system
 </p>
 
 <p align="center">
@@ -20,16 +20,16 @@
 </p>
 
 ## Project Deets
-Based on my tests, the 5 modes of QoS correspond with the scheduling priority of a process. Thus, PID QoS is determined based on scheduling priority. PID CPU Range is determined based on QoS and the activity of each core in the system.
+Based on my tests, the 5 modes of QoS correspond with the scheduling priority of a process. Thus, PID QoS is determined based on scheduling priority (found using `ps` command). The CPU cores available to host the specifed PID(s) are determined based on the activity of each CPU core (sampled using Objective-C) along with the PID QoS.
 
-The tool uses the `ps` command to find the sched priority of PID, and uses Objective-C code to access CPU usage metrics. Unfortunately, Intel Macs are not supported by this project due to the behavior of SMP.
+Unfortunately, Intel Macs are not supported by this project due to the behavior of SMP.
 
 ## Installation and Usage
 1. Download the .zip file from the [latest release](https://github.com/BitesPotatoBacks/MxPidCpuRange/releases).
 2. Unzip the .zip file and run the `install.sh` script in your terminal, like so: `sudo bash PATH/TO/SCRIPT/install.sh -i`. To see all installer options, use arg `-h`.
-3. Once the installation is complete, you may execute a command with root priveleges using `mxpidcpur`. To see all runtime options, use arg `-h`.
+3. Once the installation is complete, you may use `mxpidcpur`. To see all runtime options, use arg `-h`.
 
-In the output, CPU cores available to the specifed PID(s) are preseneted in **bold**. Cores out of range will appear in gray.
+In the output, CPU cores available to host the specifed PID(s) are preseneted in **bold**. Cores out of range will appear in gray.
 
 
 ## Issues
